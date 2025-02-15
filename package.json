@@ -8,7 +8,7 @@
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "gh-pages": "git branch gh-pages",
-    "predeploy": "git add dist -f && git commit -m \"Deployment commit\"",
+    "predeploy": "git checkout gh-pages && git merge main --no-edit && git add dist -f && git commit -m \"Deployment commit\"",
     "deploy": "git subtree push --prefix dist origin gh-pages",
     "postdeploy": "git checkout main"
   },
