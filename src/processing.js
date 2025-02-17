@@ -11,7 +11,11 @@ export default class Location {
     return this.data.description;
   }
 
-  getToday() {
+  getNow() {
     return this.data.currentConditions;
+  }
+
+  getDay(day) {
+    return this.data.days[day];
   }
 }
