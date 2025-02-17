@@ -6,9 +6,12 @@ const API_KEY_URL = `?key=${API_KEY}`;
 const getLocationData = async (location) => {
   try {
     const response = await fetch(SITE_URL + location + API_KEY_URL);
+    if (!response.ok) {
+      throw new Error("Location not found");
+    }
     return response.json();
   } catch (error) {
-    return console.log("Error: ", error);
+    throw new Error(`Error: ${error.message}`);
   }
 };
 
