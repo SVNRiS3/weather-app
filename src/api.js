@@ -5,8 +5,7 @@ const API_KEY_URL = `?key=${API_KEY}`;
 
 const getLocationData = async (location) => {
   const response = await fetch(SITE_URL + location + API_KEY_URL);
-  const responseJSON = await response.json();
-  console.log(responseJSON);
+  return response.json();
 };
 
 export default getLocationData;
