@@ -1,3 +1,4 @@
-import './style.css';
+import "./style.css";
+import getLocationData from "./api";
 
-console.log('Hello, world!');
+getLocationData("Reda,pl");
