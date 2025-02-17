@@ -1,4 +1,7 @@
 import "./style.css";
 import getLocationData from "./api";
+import Location from "./processing";
 
-getLocationData("Reda,pl");
+const locationData = await getLocationData("Reda,pl");
+const currentLocation = new Location(locationData);
+console.log(currentLocation.getToday());
