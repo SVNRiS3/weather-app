@@ -3,19 +3,14 @@ export default class Location {
     this.data = locationData;
   }
 
-  getAddress() {
-    return this.data.resolvedAddress;
-  }
-
-  getDescription() {
-    return this.data.description;
-  }
-
   getNow() {
-    return this.data.currentConditions;
-  }
-
-  getDay(day) {
-    return this.data.days[day];
+    const weatherNowData = this.data.currentConditions;
+    const { conditions, feelslike, temp } = weatherNowData;
+    const weatherDataFiltered = {
+      conditions,
+      feelslike,
+      temp,
+    };
+    return weatherDataFiltered;
   }
 }
