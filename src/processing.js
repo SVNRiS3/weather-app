@@ -17,17 +17,15 @@ class Location {
   }
 }
 
-const getUserLocation = (form, userLocation) => {
-  form.addEventListener("submit", (event) => {
-    getLocationData(userLocation.value)
-      .then((locationData) => {
-        const currentLocation = new Location(locationData);
-        console.log(currentLocation.getNow());
-        return currentLocation;
-      })
-      .catch((error) => console.log(error.message));
-    event.preventDefault();
-  });
+const getUserLocation = (form, userLocation, event) => {
+  event.preventDefault();
+  return getLocationData(userLocation.value)
+    .then((locationData) => {
+      const currentLocation = new Location(locationData);
+      console.log(currentLocation);
+      return currentLocation;
+    })
+    .catch((error) => error.message);
 };
 
 export default getUserLocation;

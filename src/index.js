@@ -1,7 +1,7 @@
 import "./style.css";
-import getUserLocation from "./processing";
+import run from "./render";
 
 const form = document.querySelector(".location-form");
-const userLocation = document.querySelector("#location");
+const userLocationInput = document.querySelector("#location");
 
-getUserLocation(form, userLocation);
+run(form, userLocationInput);
