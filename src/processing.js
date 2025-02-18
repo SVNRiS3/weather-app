@@ -1,4 +1,6 @@
-export default class Location {
+import getLocationData from "./api";
+
+class Location {
   constructor(locationData) {
     this.data = locationData;
   }
@@ -14,3 +16,18 @@ export default class Location {
     return weatherDataFiltered;
   }
 }
+
+const getUserLocation = (form, userLocation) => {
+  form.addEventListener("submit", (event) => {
+    getLocationData(userLocation.value)
+      .then((locationData) => {
+        const currentLocation = new Location(locationData);
+        console.log(currentLocation.getNow());
+        return currentLocation;
+      })
+      .catch((error) => console.log(error.message));
+    event.preventDefault();
+  });
+};
+
+export default getUserLocation;
