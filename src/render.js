@@ -12,32 +12,28 @@ const createElementAdv = (type, className = null, text = null) => {
 };
 
 const renderWeather = (element, weatherData) => {
-  const weatherBlock = document.querySelector(".container");
-  weatherBlock.innerHTML = "";
   const weatherInfo = [
     createElementAdv("div", "info", weatherData.conditions),
     createElementAdv("div", "info", `Feels like: ${weatherData.feelslike}`),
     createElementAdv("div", "info", `Temperature: ${weatherData.temp}`),
   ];
 
-  weatherInfo.map((el) => weatherBlock.appendChild(el));
-
-  element.after(weatherBlock);
-  // todo
+  weatherInfo.map((el) => element.appendChild(el));
 };
 
 const renderError = (element, errorMessage) => {
   const errorBlock = createElementAdv("div", "error", errorMessage);
-  element.after(errorBlock);
+  element.appendChild(errorBlock);
 };
 
 const run = (form, userLocationInput) => {
+  const weatherBlock = document.querySelector(".container");
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     getUserLocation(userLocationInput).then((response) => {
-      console.log(response);
-      if (typeof response !== "object") renderError(form, response);
-      else renderWeather(form, response);
+      weatherBlock.innerHTML = "";
+      if (typeof response !== "object") renderError(weatherBlock, response);
+      else renderWeather(weatherBlock, response);
     });
   });
 };
